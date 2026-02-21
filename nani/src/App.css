@@ -1,0 +1,107 @@
+/* App-specific styles */
+
+/* Smooth transitions for all interactive elements */
+button, a, input {
+  transition: all 0.2s ease;
+}
+
+/* Canvas container styling */
+canvas {
+  display: block;
+  outline: none;
+}
+
+/* Texture image styling */
+.texture-preview img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted-foreground) / 0.3) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Tab styling */
+[data-state="active"] {
+  position: relative;
+}
+
+[data-state="active"]::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: hsl(var(--primary));
+  border-radius: 2px;
+}
+
+/* Slider styling */
+[data-orientation="horizontal"] {
+  height: 6px;
+}
+
+[data-orientation="horizontal"] > [data-orientation="horizontal"] {
+  background: hsl(var(--primary));
+}
+
+/* Switch styling */
+[data-state="checked"] {
+  background: hsl(var(--primary));
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px hsl(var(--background) / 0.3);
+}
+
+/* Focus states */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animation for upload area */
+@keyframes border-pulse {
+  0%, 100% {
+    border-color: hsl(var(--border));
+  }
+  50% {
+    border-color: hsl(var(--primary) / 0.5);
+  }
+}
+
+.upload-active {
+  animation: border-pulse 2s ease-in-out infinite;
+}
